@@ -1,0 +1,21 @@
+============
+DTMC mode
+============
+
+dtmc
+
+---
+
+(source_file
+  (model_checker_definition))
+
+============
+CTMC mode
+============
+
+ctmc
+
+---
+
+(source_file
+  (model_checker_definition))
