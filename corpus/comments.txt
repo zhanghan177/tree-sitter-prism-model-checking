@@ -1,0 +1,16 @@
+============
+Comments
+============
+
+// Test nothing should happen
+
+// There is nothing useful at all; #we23osfdn203r f h32u  34  e a + b = 123;; // abc
+
+//testtest
+
+---
+
+(source_file
+  (comment)
+  (comment)
+  (comment))
