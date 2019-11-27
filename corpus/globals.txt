@@ -1,0 +1,53 @@
+============
+Global constants
+============
+
+const int MAX=99;
+
+---
+
+(source_file
+  (global_definition
+    (global_constant_definition
+      (primitive_type)
+      (assignment_expression
+        (identifier)
+        (number)))))
+
+============
+Global constants with comments
+============
+
+const int MAX=99;  // comments
+
+---
+
+(source_file
+  (global_definition
+    (global_constant_definition
+      (primitive_type)
+      (assignment_expression
+        (identifier)
+        (number))))
+  (comment))
+
+============
+Global variable declaration
+============
+
+global x: [0..10] init 0;
+
+---
+
+(source_file
+  (global_definition
+    (global_variable_definition
+      (variable_declaration_expression
+        (identifier)
+        (number)
+        (number)
+        (number)
+      )
+    )
+  )
+)

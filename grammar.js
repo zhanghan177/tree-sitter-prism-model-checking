@@ -20,20 +20,22 @@ module.exports = grammar({
     ),
 
     global_definition: $ => choice(
-      $.global_const_definition,
-      // $.global_variable_definition,
+      $.global_constant_definition,
+      $.global_variable_definition,
     ),
 
-    global_const_definition: $ => seq(
+    global_constant_definition: $ => seq(
       'const',
       $.primitive_type,
-      $.assignment_statement,
+      $.assignment_expression,
       ';',
     ),
 
-    // global_variable_definition: $ => seq(
-    //   // TODO:
-    // ),
+    global_variable_definition: $ => seq(
+      'global',
+      $.variable_declaration_expression,
+      ';',
+    ),
 
     module_definition: $ => seq(
       'module',
@@ -96,9 +98,7 @@ module.exports = grammar({
 
     assignment_statement: $ => seq(
       // TODO:
-      $.identifier,
-      '=',
-      $._expression,
+      $.assignment_expression,
       ';',
     ),
 
@@ -106,9 +106,29 @@ module.exports = grammar({
       $.identifier,
       $.number,
       // TODO: other kinds of expressions
+      $.assignment_expression,
+      $.variable_declaration_expression,
     ),
 
-    identifier: $ => /[A-Z|a-z|_]\w+/,
+    assignment_expression: $ => seq(
+      $.identifier,
+      '=',
+      $._expression,
+    ),
+
+    variable_declaration_expression: $ => seq(
+      $.identifier,
+      ':',
+      '[',
+      $._expression,
+      '..',
+      $._expression,
+      ']',
+      'init',
+      $._expression
+    ),
+
+    identifier: $ => /[A-Z|a-z|_]+\w*/,
 
     number: $ => /\d+/,
 
